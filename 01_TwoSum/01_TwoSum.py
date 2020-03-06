@@ -15,11 +15,11 @@ return [0, 1].
 class Solution:
     def twoSum(self, nums: [int], target: int) -> [int]:
 
-        '''
-        There are 2 algorithms to utilize: OnePashHash and BruteForce Method
-        '''
+      
+        # There are 2 algorithms to utilize below: OnePassHash and BruteForce Method. Swap in one of the two methods into the main call below
+        
 
-        # One pass hash closure to solve problem
+        # ====== One pass hash closure to solve problem ======
         '''
         Strategy: utilize a Dictionary to house numbers and index they were found in the array i.e Dictionary[nums[i], i]
                 - Set a compliments variable (compliment = target - nums[i])
@@ -49,7 +49,7 @@ class Solution:
             
             return [0]
         
-        # Bruteforce closure to solve problem
+        # ====== Bruteforce closure to solve problem ======
         '''
         Strategy: Use to loops to iterate: head and tail loop. Compare i+ j=target where i<j
         TimeComplexity: O(n2) - two loops that iterate through n
@@ -69,11 +69,11 @@ class Solution:
             return [0]
 
         # swap in one of the above closures to solve the Sum of Two numbers problem
-        #result = onePassHash(self,nums, target)
-        result = bruteForce(self,nums, target)
+        result = onePassHash(self,nums, target)
 
         return result
-    
+
+# main method
 if __name__ == "__main__":
     myObj = Solution()
     print(myObj.twoSum([2, 7, 11, 15],13))
