@@ -35,11 +35,10 @@ class Solution:
                 carry = carry + l2.val if l2 else carry + 0
                 l2 = l2.next
             
-            # calculate the carry values: digit to place, to add to l3 node, and to carry over
-            digit = carry % 10
-            carry = carry // 10
+            digit = carry % 10 # provides us the right-most digit of the l1+l2 result. Will be placed in l3 node
+            carry = carry // 10 # provides us the left-most digit of the l1++l2 result. Will be utilized in next loop
 
-            # set the l3 value to the digit
+            # set the l3 node's value property
             l3.val = digit
 
             # if there are stil l1 or l2 or carry digits to be added
