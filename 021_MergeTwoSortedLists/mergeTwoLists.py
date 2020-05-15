@@ -56,31 +56,35 @@ class Solution:
         #while l1 or l2 has nodes/values
         while (l1 or l2):
 
+            # if l1 nd l2 empty
+            if (l1 is None and l2 is None):
+                break
+
             # handle if l1 or l2 are None
-            if(l1 is None):
+            elif(l1 is None):
                 l3.next = l2 # then focus onto l2 node
                 break
             
             elif(l2 is None):
                 l3.next = l1
                 break
-
-            if(l1 or l2):
-                if (l1.val < l2.val):
-                    # smallests
-                    smallestValue = l1.val
-                    l1 = l1.next
+            else:
+                if(l1 or l2):
+                    if (l1.val < l2.val):
+                        # smallests
+                        smallestValue = l1.val
+                        l1 = l1.next
+                    
+                    elif (l2.val < l1.val):
+                        smallestValue = l2.val
+                        l2 = l2.next
                 
-                elif (l2.val < l1.val):
-                    smallestValue = l2.val
-                    l2 = l2.next
-            
-                # assign l3 nodes
-                print(smallestValue)
-                l3.val = smallestValue
-                if(l3):
-                    l3 = ListNode(0)
-                    l3.next
+                    # assign l3 nodes
+                    print(smallestValue)
+                    l3.val = smallestValue
+                    if(l3):
+                        l3 = ListNode(0)
+                        l3.next
 
         return head
     
