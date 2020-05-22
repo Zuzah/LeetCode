@@ -34,10 +34,10 @@ class Solution:
             complimentHash: dict = {} 
 
             # iterate through the nums
-            for i in range(0, len(nums)):
+            for i, number in enumerate(nums):
 
                 # calculate compliment value to achieve target on i
-                compliment = target - nums[i]
+                compliment = target - number
 
                 # if compliment is in hashtable.value 
                 if compliment in complimentHash:
@@ -45,7 +45,7 @@ class Solution:
                     return [complimentHash[compliment], i]
                 
                 else:
-                    complimentHash[nums[i]]=i
+                    complimentHash[number]=i
             
             return [0]
         
