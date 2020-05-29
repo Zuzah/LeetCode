@@ -43,55 +43,59 @@ import unittest
 
 class Solution:
 
-    # TODO: handle "". 
+    def isPalendrome(self, s) -> bool:
+
+        flag: bool
+
+        # iterate along the word
+        for i, ichar in enumerate(s):
+            # check if the opposite index match up: i -> s[len(s)-i-1]
+            if (ichar != s[len(s)-i-1]):
+                flag = False
+                return flag
+        
+        return True
 
     # Brute Force/Too slow for LeetCode acceptance
     def longestPalindromeBruteForce(self, s: str) -> str:
         # vars
         myPalendromes = {}
-        isPalendrome = False
+        flag: bool = True
         largestPalendrome = ""
         currentWord = ""
 
-        # peform 3 nested loops: i head loop over s; j tail loop up to s; k for palendrome validation
+        # if s empty
+        if(s == ""):
+            return ""
 
         for i, ichar in enumerate(s):
             # currentWord starts with the Ith character
             currentWord = ichar
-
-            # Base Case: allow for the very first char to be considered a palendrome
-            if(len(s)>0):
-                myPalendromes[s[0]]=1
  
             for j, jchar in enumerate(s):
 
-                # IF Jth in betweenthe Ith char and the last char of s
+                # IF Jth in betweenthe Ith char and the last char of s: abcda
                 if (j> i and j <= len(s)):
                     # then append next available Jth character to create word
                     currentWord+=jchar
+ 
+                    # accept 1st char as a palendrome
+                    if(len(currentWord) == 1):
+                        myPalendromes[1]=currentWord
 
-                    # iterate over the currentWord and determine IF a palendrome
-                    for k, kchar in enumerate(currentWord):
-                        
-                        # IF the opposite char are not equal
-                        if (kchar != currentWord[len(currentWord)-k-1]):
-                            isPalendrome = False
-                        # ELSE
-                        else:
-                            isPalendrome = True
+                    # utilize helper function to check the current word is a palendrome OR calculate in-place
+                    flag = self.isPalendrome(currentWord)
                     
-                    # IF a Palendrome
-                    if(isPalendrome):
-                            # insert/overwrite Palendrome into dictionary: key=palendrome, value=length
-                            myPalendromes[currentWord]= len(currentWord)
-            ## Print/Test all values in dict()
-            #for k, v in myPalendromes.items():
-            #    print(k, v)
+                if (flag != False):
+                    myPalendromes[len(currentWord)]= currentWord
+        # Print/Test all values in dict()
+        #for k, v in myPalendromes.items():
+        #    print(v, "=>",k)
 
         if(myPalendromes):
             largestPalendrome = max(myPalendromes.keys())
         
-        return largestPalendrome
+        return myPalendromes[largestPalendrome]
     
 
     def longestPalindrome(self, s: str) -> str:
@@ -101,9 +105,11 @@ class Solution:
 
 class SolutionTest(unittest.TestCase):
 
+    
     def test01 (self):
         result = Solution().longestPalindromeBruteForce("racecar")
         self.assertEqual(result, "racecar", "Expected Racecar")
+    
     
     def test02 (self):
         result = Solution().longestPalindromeBruteForce("")
@@ -114,12 +120,19 @@ class SolutionTest(unittest.TestCase):
         self.assertEqual(result, "a", "Expected a")
 
     def test04 (self):
+        self.lst = ['aba', 'bab']
         result = Solution().longestPalindromeBruteForce("babad")
-        self.assertEqual(result, "bab", "Expected bab")
-    
+        self.assertIn(result, self.lst)
+
     def test05 (self):
         result = Solution().longestPalindromeBruteForce("cbbd")
         self.assertEqual(result, "bb", "Expected bb")
+    
+    def test06 (self):
+        result = Solution().longestPalindromeBruteForce("abcda")
+        self.assertEqual(result, "a", "Expected a")
+    
+    
 if __name__ == "__main__":
     unittest.main()
 
