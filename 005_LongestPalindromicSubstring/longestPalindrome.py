@@ -97,42 +97,116 @@ class Solution:
         
         return myPalendromes[largestPalendrome]
     
+    '''
+    aaaa
+
+    isEven
+        .: No midpoint to calculate
+        left = 
+    '''
 
     def longestPalindrome(self, s: str) -> str:
-        pass
+        # vars
+        myPalendromes = {}
+        largestPalendrome: int = 0
+        midpoint: int
+        leftTuple: int
+        rightTuple: int
+        left: int
+        right: int
+        isEvenLength = True if len(s) % 2 == 0 else False # character length of odd and even important in palendromes
         
+        # Basecase: if s is empty
+        if (len(s) == 0):
+            return ""
+  
+        # if the string char # are event i.e 'aa' or 'aaaa'. Len = 2 or 4. .: tuples - 2/2=1 and 4/2=2. Tuples are 
+        if(isEvenLength == True):
+            # determine the tuple chars
+            leftTuple = s[int(len(s)/2)-1]
+            rightTuple = s[int(len(s)/2)]
+            
+            # push just the left tuple as a palendrome
+            myPalendromes[len(leftTuple)]=leftTuple
 
+            # if both tuples are palendrome
+            if(leftTuple == rightTuple):
+                currentWord = leftTuple + rightTuple
+                myPalendromes[len(currentWord)]=currentWord
+            left = int(len(s)/2) -1 -1
+            right = int(len(s)/2) + 1
+    
+
+        # 'aaa' or 'aaaaa' midpoint = 3/2=1.5 or 5/2=2.5
+        if(isEvenLength == False):
+            # determine the midpoint chars
+            # set left and right vars to
+                  # determine the tuple chars
+            midpoint = int(len(s)/2)
+            currentWord = s[midpoint]
+            left = midpoint -1
+            right = midpoint + 1
+            myPalendromes[len(currentWord)]=currentWord
+            
+        # while left and right pointers not pass boundries: racecar midpoint a, therefore
+        while (left >= 0 and right <= len(s)-1 and s[left] == s[right]):
+
+            currentWord= s[left] + currentWord + s[right]
+            myPalendromes[len(currentWord)]=currentWord
+            left-=1
+            right+=1
+            
+        # claculate largest key() value in dictionary
+        largestPalendrome = max(myPalendromes.keys())
+    
+        # test dict values
+        for k, v in myPalendromes.items():
+            print (k, v)
+
+        return myPalendromes[largestPalendrome]
 
 class SolutionTest(unittest.TestCase):
 
     
     def test01 (self):
-        result = Solution().longestPalindromeBruteForce("racecar")
+        result = Solution().longestPalindrome("racecar")
         self.assertEqual(result, "racecar", "Expected Racecar")
     
     
     def test02 (self):
-        result = Solution().longestPalindromeBruteForce("")
+        result = Solution().longestPalindrome("")
         self.assertEqual(result, "", "Expected empty")
     
     def test03 (self):
-        result = Solution().longestPalindromeBruteForce("a")
+        result = Solution().longestPalindrome("a")
         self.assertEqual(result, "a", "Expected a")
-
+    
     def test04 (self):
         self.lst = ['aba', 'bab']
-        result = Solution().longestPalindromeBruteForce("babad")
+        result = Solution().longestPalindrome("babad")
         self.assertIn(result, self.lst)
-
+    
+    
     def test05 (self):
-        result = Solution().longestPalindromeBruteForce("cbbd")
+        result = Solution().longestPalindrome("cbbd")
         self.assertEqual(result, "bb", "Expected bb")
     
     def test06 (self):
-        result = Solution().longestPalindromeBruteForce("abcda")
-        self.assertEqual(result, "a", "Expected a")
+        self.lst = ['a,','c']
+        result = Solution().longestPalindrome("abcda")
+        self.assertIn(result, self.lst)
+    
+    def test06 (self):
+        self.lst = ['a','c']
+        result = Solution().longestPalindrome("ac")
+        self.assertIn(result, self.lst)
+    
+    def test07 (self):
+        result = Solution().longestPalindrome("abb")
+        self.assertEqual(result, "bb", "Expected bb")
     
     
 if __name__ == "__main__":
     unittest.main()
-
+    #myObj = Solution()
+    #myObj.longestPalindrome("eeee")
