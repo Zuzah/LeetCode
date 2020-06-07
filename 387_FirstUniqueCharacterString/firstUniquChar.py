@@ -33,6 +33,10 @@ class Solution:
         """
         :type s: str
         :rtype: int
+
+        Time Complexity: O(n) since we go trhough string of length N two times
+
+        Space Complexity: O(1) because english alphabet contains 26 chars
         """
         # build hash map : character and how often it appears
         count = collections.Counter(s)
