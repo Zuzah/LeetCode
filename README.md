@@ -9,7 +9,7 @@ The following checklist is taken from the excellent Tech Interview Handbook by Y
 
 | Topic                | Question # | Problem                                                   | Dificulty | Status |
 |----------------------|------------|-----------------------------------------------------------|-----------|--------|
-| HashMaps             | 2          | Two Sum                                                   | Easy      | Done   |
+| HashMaps             | 2          | Two Sum                                                   | Easy      | - [x]  |
 |                      |            | Group Anagram                                             | Medium    |        |
 |                      |            | Intersection of Two Arrays                                | Easy      |        |
 |                      |            | Unique Email Addresses                                    | Easy      |        |
