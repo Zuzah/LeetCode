@@ -7,11 +7,11 @@ The following checklist is taken from the excellent Tech Interview Handbook by Y
 
 > https://yangshun.github.io/tech-interview-handbook/
 
-| Topic                | Question # | Problem                                                   | Dificulty | Status |
-|----------------------|------------|-----------------------------------------------------------|-----------|--------|
-| HashMaps             | 2          | Two Sum                                                   | Easy      |&#x2611;|
-|                      |            | Group Anagram                                             | Medium    |        |
-|                      |            | Intersection of Two Arrays                                | Easy      |        |
+| Topic                | Question # | Problem                                                      | Dificulty | Status |
+|----------------------|------------|--------------------------------------------------------------|-----------|--------|
+| HashMaps             |    002     | [Two Sum](https://leetcode.com/problems/two-sum/)              | Easy      |&#x2611;|
+|                      |    049     | [Group Anagram](https://leetcode.com/problems/group-anagrams/) | Medium    |        |
+|                      |    349     | [Intersection of Two Arrays](https://leetcode.com/problems/intersection-of-two-arrays/)| Easy      |        |
 |                      |            | Unique Email Addresses                                    | Easy      |        |
 |                      |            | First Unique Character in a String                        | Easy      |        |
 |                      |            | Subarray Sum Equals K                                     | Medium    |        |
