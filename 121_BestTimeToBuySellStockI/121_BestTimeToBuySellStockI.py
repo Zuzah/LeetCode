@@ -79,7 +79,12 @@ class Solution:
 class Solution_UnitTest(unittest.TestCase):
     def test_01(self):
         result = Solution().maxProfit_OnePass([7, 1, 5, 3, 6, 4])
-        self.assertEquals(result,5, "Expected value of 5" )
+        self.assertEqual(result,5, "Expected value of 5" )
+
+    def test_02(self):
+        result = Solution().maxProfit_OnePass([9,8,4,1,2])
+        self.assertEqual(result,1, "Expected value of 1")
+        
 
 if __name__ == "__main__":
     #myObj = Solution()
